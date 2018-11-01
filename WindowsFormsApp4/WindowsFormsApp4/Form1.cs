@@ -14,7 +14,7 @@ namespace WindowsFormsApp4
     public partial class Form1 : Form
     {
         int h1 = 440,IndexY = 0 ;
-        double S, H, V, K1, AO, BHO, OB, Kov = 0.5;
+        double S, H, V, K1, AO, BHO, OB, IC, Kvp, Vf, M, Kov = 0.5;
         string selection1;
 
         static double[][] osad = new double[][] {           //   Массив с коэффицентами для осадков
@@ -44,6 +44,11 @@ namespace WindowsFormsApp4
 
         static double[] vid = new double[]          //   массив с коэффицентами для видов поверхностей
         {0.20, 0.30, 0.40, 0.50, 0.50, 0.56, 0.58, 0.60, 0.85, 0.90, 0.90};
+        
+        private void button2_Click_1(object sender, EventArgs e)            //   кнопка "Назад" на панели
+        {
+            panel1.Visible = false;
+        }
 
         static double GetV(double S, double H = 0, string selection1 = "")          //   метод для нахождения объёма
         {
@@ -67,13 +72,17 @@ namespace WindowsFormsApp4
             }
         }
 
-        private void comboBox3_MouseHover(object sender, EventArgs e)           //   разворачивается список при наведении мыши
+        private void comboBox1_MouseHover(object sender, EventArgs e)            //   разворачивается список при наведении
         {
             var box = sender as ComboBox;
             box.DroppedDown = true;
         }
 
-    
+        private void comboBox3_MouseHover(object sender, EventArgs e)           //   разворачивается список при наведении мыши
+        {
+            var box = sender as ComboBox;
+            box.DroppedDown = true;
+        }
 
         static int GetIndex(int h1)         //   получения индекса для коэффицента осадков
         {
@@ -107,7 +116,6 @@ namespace WindowsFormsApp4
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)         //  получение данных о форме при выборе из списка
         {
             selection1 = comboBox1.SelectedItem.ToString();
-           // MessageBox.Show(selection1);
         }
               
                 public Form1()          //  здраствуй, форма
@@ -117,7 +125,7 @@ namespace WindowsFormsApp4
 
         private void button1_Click(object sender, EventArgs e)          //   кнопка 
         {
-
+            selection1 = comboBox1.Text.ToString();         //   так, похоже, можно с самого начала было делать
             V = GetV(S, H, selection1);         //   получаем объём свалки
             BHO = (0.15 * V);
             
@@ -127,12 +135,19 @@ namespace WindowsFormsApp4
             K1 = osad[IndexY][1];           //   находим коэффицент
             // h1 = numericUpDown1.Value;
             AO = 0.001 * S * h1 * K1;
-           // OB = Kov * (AO - IC);
-            label10.Text = Convert.ToString(BHO);
+            Kvp = vid[comboBox3.Items.IndexOf(comboBox3.Text)];
+            IC = 0.01 * S * 54 * 1.113 * Kvp; 
+            OB = Kov * (AO - IC);
+            Vf = (AO + OB) - (IC + BHO);            //   самая большая и самая страшная формула
+            M = V * 0.45;           //   масса отходов
+            
             label10.Visible = true;
-            button2.Visible = true;
-           // label9.Text = Convert.ToString(vid [0]);
-            label9.Text = Convert.ToString(comboBox3.Items.IndexOf(comboBox3.Text));
+            label10.Text = Convert.ToString(Vf);
+            label12.Text = Convert.ToString(S);         //   Там нужна площадь ПОВЕРХНОСТИ!!! надо переделать
+            label14.Text = Convert.ToString(V);
+            label16.Text = Convert.ToString(M);
+            panel1.Visible = true;
+
         }
     }
 }

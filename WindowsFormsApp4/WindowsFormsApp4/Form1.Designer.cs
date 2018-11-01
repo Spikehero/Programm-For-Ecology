@@ -44,20 +44,28 @@
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(318, 145);
+            this.button1.Location = new System.Drawing.Point(283, 402);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(134, 124);
+            this.button1.Size = new System.Drawing.Size(116, 46);
             this.button1.TabIndex = 0;
-            this.button1.Text = "Рассчёт";
+            this.button1.Text = "Далее";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -122,7 +130,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(126, 55);
+            this.textBox2.Location = new System.Drawing.Point(200, 55);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 9;
@@ -136,17 +144,19 @@
             "конус",
             "пирамида",
             "параллелепипед"});
-            this.comboBox1.Location = new System.Drawing.Point(110, 91);
+            this.comboBox1.Location = new System.Drawing.Point(200, 88);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 10;
-            this.comboBox1.Text = "...";
+            this.comboBox1.Text = "конус";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             this.comboBox1.TextChanged += new System.EventHandler(this.comboBox1_TextChanged);
+            this.comboBox1.MouseHover += new System.EventHandler(this.comboBox1_MouseHover);
             // 
             // comboBox2
             // 
             this.comboBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboBox2.Enabled = false;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
             "пищевые отходы",
@@ -154,21 +164,23 @@
             "текстиль, шерсть",
             "дерево, кожаные изделия",
             "кирпич/камень"});
-            this.comboBox2.Location = new System.Drawing.Point(116, 176);
+            this.comboBox2.Location = new System.Drawing.Point(200, 173);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 21);
             this.comboBox2.TabIndex = 11;
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(137, 227);
+            this.textBox4.Enabled = false;
+            this.textBox4.Location = new System.Drawing.Point(200, 230);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(100, 20);
             this.textBox4.TabIndex = 12;
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(137, 290);
+            this.textBox5.Enabled = false;
+            this.textBox5.Location = new System.Drawing.Point(200, 278);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(100, 20);
             this.textBox5.TabIndex = 13;
@@ -193,17 +205,17 @@
             "Насыпные поверхности, покрытые травянистой и редкой кустарниковой растительностью" +
                 "",
             "Акватории отстойников со слабозагрязнённой поверхностью"});
-            this.comboBox3.Location = new System.Drawing.Point(126, 352);
+            this.comboBox3.Location = new System.Drawing.Point(200, 344);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(174, 21);
+            this.comboBox3.Size = new System.Drawing.Size(252, 21);
             this.comboBox3.TabIndex = 14;
-            this.comboBox3.Text = "...";
+            this.comboBox3.Text = "Металлические крыши с уклоном";
             this.comboBox3.MouseHover += new System.EventHandler(this.comboBox3_MouseHover);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(23, 416);
+            this.label9.Location = new System.Drawing.Point(36, 179);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(108, 13);
             this.label9.TabIndex = 15;
@@ -212,28 +224,17 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(137, 416);
+            this.label10.Location = new System.Drawing.Point(151, 179);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(13, 13);
+            this.label10.Size = new System.Drawing.Size(10, 13);
             this.label10.TabIndex = 16;
-            this.label10.Text = "0";
-            this.label10.Visible = false;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(327, 370);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(113, 46);
-            this.button2.TabIndex = 17;
-            this.button2.Text = "Далее";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Visible = false;
+            this.label10.Text = "-";
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(26, 115);
+            this.label4.Location = new System.Drawing.Point(23, 119);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 54);
+            this.label4.Size = new System.Drawing.Size(108, 54);
             this.label4.TabIndex = 20;
             this.label4.Text = "Среднее количество осадков за год, мм";
             // 
@@ -253,7 +254,7 @@
             0,
             0,
             0});
-            this.numericUpDown1.Location = new System.Drawing.Point(116, 133);
+            this.numericUpDown1.Location = new System.Drawing.Point(200, 130);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             650,
             0,
@@ -274,21 +275,102 @@
             0,
             0});
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.label16);
+            this.panel1.Controls.Add(this.label15);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Controls.Add(this.label13);
+            this.panel1.Controls.Add(this.label12);
+            this.panel1.Controls.Add(this.label10);
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(491, 466);
+            this.panel1.TabIndex = 23;
+            this.panel1.Visible = false;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(68, 403);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 27;
+            this.button2.Text = "Назад";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(149, 145);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(10, 13);
+            this.label14.TabIndex = 26;
+            this.label14.Text = "-";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(34, 145);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(110, 13);
+            this.label13.TabIndex = 25;
+            this.label13.Text = "Объём свалки, м3 =";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(232, 98);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(10, 13);
+            this.label12.TabIndex = 24;
+            this.label12.Text = "-";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(31, 98);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(122, 13);
+            this.label11.TabIndex = 23;
+            this.label11.Text = "Площадь свалки, м2 =";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(34, 214);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(103, 13);
+            this.label15.TabIndex = 28;
+            this.label15.Text = "Масса отходов, т =";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(143, 214);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(10, 13);
+            this.label16.TabIndex = 29;
+            this.label16.Text = "-";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 461);
-            this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
@@ -299,9 +381,12 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -325,10 +410,17 @@
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
     }
 }
 
