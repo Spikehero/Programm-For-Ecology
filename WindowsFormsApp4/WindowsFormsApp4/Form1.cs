@@ -45,6 +45,16 @@ namespace WindowsFormsApp4
         static double[] vid = new double[]          //   массив с коэффицентами для видов поверхностей
         {0.20, 0.30, 0.40, 0.50, 0.50, 0.56, 0.58, 0.60, 0.85, 0.90, 0.90};
 
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            panel1.Visible = false;
+        }
+
         static double GetV(double S, double H = 0, string selection1 = "")          //   метод для нахождения объёма
         {
             switch (selection1)         //   свич, выбирающий форму
@@ -75,7 +85,7 @@ namespace WindowsFormsApp4
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+          
         }
 
         private void comboBox3_MouseHover(object sender, EventArgs e)           //   разворачивается список при наведении мыши
@@ -142,11 +152,16 @@ namespace WindowsFormsApp4
             IC = 0.01 * S * 54 * 1.113 * Kvp; 
             OB = Kov * (AO - IC);
             Vf = (AO + OB) - (IC + BHO);
-            label9.Visible = true;
+            
             label10.Visible = true;
-            button2.Visible = true;
+            //button2.Visible = true;
            // label9.Text = Convert.ToString(vid [0]);
             label10.Text = Convert.ToString(Vf);
+            label12.Text = Convert.ToString(S);
+            label14.Text = Convert.ToString(V);
+
+            panel1.Visible = true;
+
         }
     }
 }
