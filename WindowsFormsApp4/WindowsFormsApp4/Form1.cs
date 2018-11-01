@@ -44,15 +44,8 @@ namespace WindowsFormsApp4
 
         static double[] vid = new double[]          //   массив с коэффицентами для видов поверхностей
         {0.20, 0.30, 0.40, 0.50, 0.50, 0.56, 0.58, 0.60, 0.85, 0.90, 0.90};
-
-
-
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click_1(object sender, EventArgs e)
+        
+        private void button2_Click_1(object sender, EventArgs e)            //   кнопка "Назад" на панели
         {
             panel1.Visible = false;
         }
@@ -85,18 +78,11 @@ namespace WindowsFormsApp4
             box.DroppedDown = true;
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-          
-        }
-
         private void comboBox3_MouseHover(object sender, EventArgs e)           //   разворачивается список при наведении мыши
         {
             var box = sender as ComboBox;
             box.DroppedDown = true;
         }
-
-    
 
         static int GetIndex(int h1)         //   получения индекса для коэффицента осадков
         {
@@ -130,7 +116,6 @@ namespace WindowsFormsApp4
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)         //  получение данных о форме при выборе из списка
         {
             selection1 = comboBox1.SelectedItem.ToString();
-           // MessageBox.Show(selection1);
         }
               
                 public Form1()          //  здраствуй, форма
@@ -140,7 +125,7 @@ namespace WindowsFormsApp4
 
         private void button1_Click(object sender, EventArgs e)          //   кнопка 
         {
-            selection1 = comboBox1.Text.ToString();
+            selection1 = comboBox1.Text.ToString();         //   так, похоже, можно с самого начала было делать
             V = GetV(S, H, selection1);         //   получаем объём свалки
             BHO = (0.15 * V);
             
@@ -153,14 +138,12 @@ namespace WindowsFormsApp4
             Kvp = vid[comboBox3.Items.IndexOf(comboBox3.Text)];
             IC = 0.01 * S * 54 * 1.113 * Kvp; 
             OB = Kov * (AO - IC);
-            Vf = (AO + OB) - (IC + BHO);
-            M = V * 0.45;
+            Vf = (AO + OB) - (IC + BHO);            //   самая большая и самая страшная формула
+            M = V * 0.45;           //   масса отходов
             
             label10.Visible = true;
-            //button2.Visible = true;
-           // label9.Text = Convert.ToString(vid [0]);
             label10.Text = Convert.ToString(Vf);
-            label12.Text = Convert.ToString(S);
+            label12.Text = Convert.ToString(S);         //   Там нужна площадь ПОВЕРХНОСТИ!!! надо переделать
             label14.Text = Convert.ToString(V);
             label16.Text = Convert.ToString(M);
             panel1.Visible = true;
