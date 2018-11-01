@@ -14,7 +14,7 @@ namespace WindowsFormsApp4
     public partial class Form1 : Form
     {
         int h1 = 440,IndexY = 0 ;
-        double S, H, V, K1, AO, BHO, OB, IC, Kvp, Vf, Kov = 0.5;
+        double S, H, V, K1, AO, BHO, OB, IC, Kvp, Vf, M, Kov = 0.5;
         string selection1;
 
         static double[][] osad = new double[][] {           //   Массив с коэффицентами для осадков
@@ -44,6 +44,8 @@ namespace WindowsFormsApp4
 
         static double[] vid = new double[]          //   массив с коэффицентами для видов поверхностей
         {0.20, 0.30, 0.40, 0.50, 0.50, 0.56, 0.58, 0.60, 0.85, 0.90, 0.90};
+
+
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
@@ -138,7 +140,7 @@ namespace WindowsFormsApp4
 
         private void button1_Click(object sender, EventArgs e)          //   кнопка 
         {
-
+            selection1 = comboBox1.Text.ToString();
             V = GetV(S, H, selection1);         //   получаем объём свалки
             BHO = (0.15 * V);
             
@@ -152,6 +154,7 @@ namespace WindowsFormsApp4
             IC = 0.01 * S * 54 * 1.113 * Kvp; 
             OB = Kov * (AO - IC);
             Vf = (AO + OB) - (IC + BHO);
+            M = V * 0.45;
             
             label10.Visible = true;
             //button2.Visible = true;
@@ -159,7 +162,7 @@ namespace WindowsFormsApp4
             label10.Text = Convert.ToString(Vf);
             label12.Text = Convert.ToString(S);
             label14.Text = Convert.ToString(V);
-
+            label16.Text = Convert.ToString(M);
             panel1.Visible = true;
 
         }
