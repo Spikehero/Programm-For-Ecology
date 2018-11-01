@@ -14,7 +14,7 @@ namespace WindowsFormsApp4
     public partial class Form1 : Form
     {
         int h1 = 440,IndexY = 0 ;
-        double S, H, V, K1, AO, BHO, OB, IC, Kvp, Kov = 0.5;
+        double S, H, V, K1, AO, BHO, OB, IC, Kvp, Vf, Kov = 0.5;
         string selection1;
 
         static double[][] osad = new double[][] {           //   Массив с коэффицентами для осадков
@@ -140,12 +140,13 @@ namespace WindowsFormsApp4
             AO = 0.001 * S * h1 * K1;
             Kvp = vid[comboBox3.Items.IndexOf(comboBox3.Text)];
             IC = 0.01 * S * 54 * 1.113 * Kvp; 
-            // OB = Kov * (AO - IC);
-            label10.Text = Convert.ToString(BHO);
+            OB = Kov * (AO - IC);
+            Vf = (AO + OB) - (IC + BHO);
+            label9.Visible = true;
             label10.Visible = true;
             button2.Visible = true;
            // label9.Text = Convert.ToString(vid [0]);
-            label9.Text = Convert.ToString(IC);
+            label10.Text = Convert.ToString(Vf);
         }
     }
 }

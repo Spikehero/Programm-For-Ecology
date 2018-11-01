@@ -209,6 +209,7 @@
             this.label9.Size = new System.Drawing.Size(108, 13);
             this.label9.TabIndex = 15;
             this.label9.Text = "Объём фильтрата =";
+            this.label9.Visible = false;
             // 
             // label10
             // 
