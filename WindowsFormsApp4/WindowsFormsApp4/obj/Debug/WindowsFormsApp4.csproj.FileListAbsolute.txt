@@ -8,3 +8,13 @@ C:\Users\user\source\repos\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\WindowsFo
 C:\Users\user\source\repos\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.csproj.CoreCompileInputs.cache
 C:\Users\user\source\repos\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.exe
 C:\Users\user\source\repos\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.pdb
+C:\GITHUB\Programm-For-Ecology\WindowsFormsApp4\WindowsFormsApp4\bin\Debug\WindowsFormsApp4.exe.config
+C:\GITHUB\Programm-For-Ecology\WindowsFormsApp4\WindowsFormsApp4\bin\Debug\WindowsFormsApp4.exe
+C:\GITHUB\Programm-For-Ecology\WindowsFormsApp4\WindowsFormsApp4\bin\Debug\WindowsFormsApp4.pdb
+C:\GITHUB\Programm-For-Ecology\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.csprojResolveAssemblyReference.cache
+C:\GITHUB\Programm-For-Ecology\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.Form1.resources
+C:\GITHUB\Programm-For-Ecology\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.Properties.Resources.resources
+C:\GITHUB\Programm-For-Ecology\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.csproj.GenerateResource.Cache
+C:\GITHUB\Programm-For-Ecology\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.csproj.CoreCompileInputs.cache
+C:\GITHUB\Programm-For-Ecology\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.exe
+C:\GITHUB\Programm-For-Ecology\WindowsFormsApp4\WindowsFormsApp4\obj\Debug\WindowsFormsApp4.pdb

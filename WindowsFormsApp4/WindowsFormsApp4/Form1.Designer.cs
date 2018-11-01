@@ -143,6 +143,7 @@
             this.comboBox1.Text = "...";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             this.comboBox1.TextChanged += new System.EventHandler(this.comboBox1_TextChanged);
+            this.comboBox1.MouseHover += new System.EventHandler(this.comboBox1_MouseHover);
             // 
             // comboBox2
             // 
@@ -195,7 +196,7 @@
             "Акватории отстойников со слабозагрязнённой поверхностью"});
             this.comboBox3.Location = new System.Drawing.Point(126, 352);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(174, 21);
+            this.comboBox3.Size = new System.Drawing.Size(326, 21);
             this.comboBox3.TabIndex = 14;
             this.comboBox3.Text = "...";
             this.comboBox3.MouseHover += new System.EventHandler(this.comboBox3_MouseHover);
@@ -221,13 +222,14 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(327, 370);
+            this.button2.Location = new System.Drawing.Point(318, 399);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(113, 46);
             this.button2.TabIndex = 17;
             this.button2.Text = "Далее";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Visible = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label4
             // 

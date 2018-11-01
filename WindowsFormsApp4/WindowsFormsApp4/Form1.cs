@@ -14,7 +14,7 @@ namespace WindowsFormsApp4
     public partial class Form1 : Form
     {
         int h1 = 440,IndexY = 0 ;
-        double S, H, V, K1, AO, BHO, OB, Kov = 0.5;
+        double S, H, V, K1, AO, BHO, OB, IC, Kvp, Kov = 0.5;
         string selection1;
 
         static double[][] osad = new double[][] {           //   Массив с коэффицентами для осадков
@@ -65,6 +65,17 @@ namespace WindowsFormsApp4
                     return 0;
                   //  break;
             }
+        }
+
+        private void comboBox1_MouseHover(object sender, EventArgs e)            //   разворачивается список при наведении
+        {
+            var box = sender as ComboBox;
+            box.DroppedDown = true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void comboBox3_MouseHover(object sender, EventArgs e)           //   разворачивается список при наведении мыши
@@ -127,12 +138,14 @@ namespace WindowsFormsApp4
             K1 = osad[IndexY][1];           //   находим коэффицент
             // h1 = numericUpDown1.Value;
             AO = 0.001 * S * h1 * K1;
-           // OB = Kov * (AO - IC);
+            Kvp = vid[comboBox3.Items.IndexOf(comboBox3.Text)];
+            IC = 0.01 * S * 54 * 1.113 * Kvp; 
+            // OB = Kov * (AO - IC);
             label10.Text = Convert.ToString(BHO);
             label10.Visible = true;
             button2.Visible = true;
            // label9.Text = Convert.ToString(vid [0]);
-            label9.Text = Convert.ToString(comboBox3.Items.IndexOf(comboBox3.Text));
+            label9.Text = Convert.ToString(IC);
         }
     }
 }
