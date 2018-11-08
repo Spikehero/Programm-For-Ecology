@@ -14,7 +14,7 @@ namespace WindowsFormsApp4
     public partial class Form1 : Form
     {
         int h1 = 440,IndexY = 0 ;
-        double S, H, V, K1, AO, BHO, OB, IC, Kvp, Vf, M, Kov = 0.5;
+        double S, H, V, K1, AO, BHO, OB, IC, Kvp, Vf, M, R, L, SP, Kkat, Kov = 0.5;
         string selection1;
 
         static double[][] osad = new double[][] {           //   Массив с коэффицентами для осадков
@@ -44,13 +44,16 @@ namespace WindowsFormsApp4
 
         static double[] vid = new double[]          //   массив с коэффицентами для видов поверхностей
         {0.20, 0.30, 0.40, 0.50, 0.50, 0.56, 0.58, 0.60, 0.85, 0.90, 0.90};
-        
+
+        static double[] kat = new double[]          //   массив с коэффицентами для категорий земель
+        {2, 1.9, 1.9, 1.8, 1.6, 1.5, 1.3, 1};
+
         private void button2_Click_1(object sender, EventArgs e)            //   кнопка "Назад" на панели
         {
             panel1.Visible = false;
         }
 
-        static double GetV(double S, double H = 0, string selection1 = "")          //   метод для нахождения объёма
+        static double GetV(double S, double H, string selection1 = "")          //   метод для нахождения объёма
         {
             switch (selection1)         //   свич, выбирающий форму
             {
@@ -70,6 +73,40 @@ namespace WindowsFormsApp4
                     return 0;
                   //  break;
             }
+        }
+
+        static double GetSP(double L, double R, string selection1 = "")
+        {
+            switch (selection1)         //   свич, выбирающий форму
+            {
+                case "конус":
+                   return (3.14 * R * L);         
+                  
+                    
+                //break;
+
+                case "пирамида":
+                    return 0;
+                // break;
+
+                case "параллелепипед":
+                    return 0;
+                // break;
+
+                default:
+                    return 0;
+                    //  break;
+            }
+        } 
+
+        static double GetRad(double S)          //   получение радиуса конуса из площади
+        {
+            return (Math.Sqrt(S / 3.14));
+        }
+
+        static double GetL(double R, double H)          //   получение образующей конуса
+        {
+            return (Math.Sqrt(H*H + R*R));
         }
 
         private void comboBox1_MouseHover(object sender, EventArgs e)            //   разворачивается список при наведении
@@ -102,22 +139,12 @@ namespace WindowsFormsApp4
         {
             S = double.Parse(textBox1.Text);
         }
-
-        private void comboBox1_TextChanged(object sender, EventArgs e)          //   получение данных о форме при клавиатурном вводе
-        {
-            selection1 = comboBox1.Text.ToString();
-        }
-            
+                           
         private void textBox2_TextChanged(object sender, EventArgs e)           //   получение переменной высоты
         {
             H = double.Parse(textBox2.Text);
         }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)         //  получение данных о форме при выборе из списка
-        {
-            selection1 = comboBox1.SelectedItem.ToString();
-        }
-              
+           
                 public Form1()          //  здраствуй, форма
         {
             InitializeComponent();
@@ -127,25 +154,29 @@ namespace WindowsFormsApp4
         {
             selection1 = comboBox1.Text.ToString();         //   так, похоже, можно с самого начала было делать
             V = GetV(S, H, selection1);         //   получаем объём свалки
-            BHO = (0.15 * V);
-            
+            R = GetRad(S);
+            L = GetL(R, H);
+            SP = GetSP(L, R);
+
+            BHO = (0.15 * V);      
             
             h1 = Convert.ToInt32(numericUpDown1.Text);          //   получаем значение из нумерика
             IndexY = GetIndex(h1);          //   получаем индекс коэффицента осадков
             K1 = osad[IndexY][1];           //   находим коэффицент
-            // h1 = numericUpDown1.Value;
             AO = 0.001 * S * h1 * K1;
             Kvp = vid[comboBox3.Items.IndexOf(comboBox3.Text)];
+            Kkat = kat[comboBox2.Items.IndexOf(comboBox2.Text)];
             IC = 0.01 * S * 54 * 1.113 * Kvp; 
             OB = Kov * (AO - IC);
-            Vf = (AO + OB) - (IC + BHO);            //   самая большая и самая страшная формула
+            Vf = Math.Abs ((AO + OB) - (IC + BHO));            //   самая большая и самая страшная формула
             M = V * 0.45;           //   масса отходов
-            
+            R = GetRad(S);
+
             label10.Visible = true;
-            label10.Text = Convert.ToString(Vf);
+            label10.Text = Convert.ToString(Kkat);
             label12.Text = Convert.ToString(S);         //   Там нужна площадь ПОВЕРХНОСТИ!!! надо переделать
             label14.Text = Convert.ToString(V);
-            label16.Text = Convert.ToString(M);
+            label16.Text = Convert.ToString(R);
             panel1.Visible = true;
 
         }

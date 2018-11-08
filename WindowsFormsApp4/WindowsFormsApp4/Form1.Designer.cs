@@ -48,20 +48,22 @@
             this.label5 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(283, 402);
+            this.button1.Location = new System.Drawing.Point(356, 320);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(116, 46);
             this.button1.TabIndex = 0;
@@ -98,7 +100,7 @@
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(20, 203);
+            this.label6.Location = new System.Drawing.Point(20, 313);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(111, 65);
             this.label6.TabIndex = 5;
@@ -106,7 +108,7 @@
             // 
             // label7
             // 
-            this.label7.Location = new System.Drawing.Point(20, 278);
+            this.label7.Location = new System.Drawing.Point(20, 388);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(100, 50);
             this.label7.TabIndex = 6;
@@ -114,7 +116,7 @@
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(20, 338);
+            this.label8.Location = new System.Drawing.Point(23, 172);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(100, 55);
             this.label8.TabIndex = 7;
@@ -149,22 +151,22 @@
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 10;
             this.comboBox1.Text = "конус";
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            this.comboBox1.TextChanged += new System.EventHandler(this.comboBox1_TextChanged);
             this.comboBox1.MouseHover += new System.EventHandler(this.comboBox1_MouseHover);
             // 
             // comboBox2
             // 
             this.comboBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.comboBox2.Enabled = false;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
-            "пищевые отходы",
-            "бумага, металл",
-            "текстиль, шерсть",
-            "дерево, кожаные изделия",
-            "кирпич/камень"});
-            this.comboBox2.Location = new System.Drawing.Point(200, 173);
+            "Особо охраняемые территории",
+            "Мохо-лишайниковые пастбища",
+            "Лугово-разнотравные горные пастбища",
+            "Водоохранная зона",
+            "Сельскохозяйственные угодия",
+            "Леса",
+            "Населённый пункт",
+            "Остальные"});
+            this.comboBox2.Location = new System.Drawing.Point(200, 237);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 21);
             this.comboBox2.TabIndex = 11;
@@ -172,7 +174,7 @@
             // textBox4
             // 
             this.textBox4.Enabled = false;
-            this.textBox4.Location = new System.Drawing.Point(200, 230);
+            this.textBox4.Location = new System.Drawing.Point(203, 343);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(100, 20);
             this.textBox4.TabIndex = 12;
@@ -180,7 +182,7 @@
             // textBox5
             // 
             this.textBox5.Enabled = false;
-            this.textBox5.Location = new System.Drawing.Point(200, 278);
+            this.textBox5.Location = new System.Drawing.Point(203, 391);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(100, 20);
             this.textBox5.TabIndex = 13;
@@ -205,7 +207,7 @@
             "Насыпные поверхности, покрытые травянистой и редкой кустарниковой растительностью" +
                 "",
             "Акватории отстойников со слабозагрязнённой поверхностью"});
-            this.comboBox3.Location = new System.Drawing.Point(200, 344);
+            this.comboBox3.Location = new System.Drawing.Point(200, 181);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(252, 21);
             this.comboBox3.TabIndex = 14;
@@ -215,7 +217,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(36, 179);
+            this.label9.Location = new System.Drawing.Point(26, 103);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(108, 13);
             this.label9.TabIndex = 15;
@@ -224,7 +226,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(151, 179);
+            this.label10.Location = new System.Drawing.Point(149, 103);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(10, 13);
             this.label10.TabIndex = 16;
@@ -241,7 +243,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(23, 176);
+            this.label5.Location = new System.Drawing.Point(23, 286);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(86, 13);
             this.label5.TabIndex = 21;
@@ -289,11 +291,29 @@
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.label9);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(2, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(491, 466);
+            this.panel1.Size = new System.Drawing.Size(483, 458);
             this.panel1.TabIndex = 23;
             this.panel1.Visible = false;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(133, 138);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(10, 13);
+            this.label16.TabIndex = 29;
+            this.label16.Text = "-";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(24, 138);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(103, 13);
+            this.label15.TabIndex = 28;
+            this.label15.Text = "Масса отходов, т =";
             // 
             // button2
             // 
@@ -308,7 +328,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(149, 145);
+            this.label14.Location = new System.Drawing.Point(149, 69);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(10, 13);
             this.label14.TabIndex = 26;
@@ -317,7 +337,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(34, 145);
+            this.label13.Location = new System.Drawing.Point(24, 69);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(110, 13);
             this.label13.TabIndex = 25;
@@ -326,7 +346,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(232, 98);
+            this.label12.Location = new System.Drawing.Point(149, 22);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(10, 13);
             this.label12.TabIndex = 24;
@@ -335,29 +355,34 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(31, 98);
+            this.label11.Location = new System.Drawing.Point(21, 22);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(122, 13);
             this.label11.TabIndex = 23;
             this.label11.Text = "Площадь свалки, м2 =";
             // 
-            // label15
+            // label17
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(34, 214);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(103, 13);
-            this.label15.TabIndex = 28;
-            this.label15.Text = "Масса отходов, т =";
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(23, 240);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(101, 13);
+            this.label17.TabIndex = 24;
+            this.label17.Text = "Категория земель";
             // 
-            // label16
+            // comboBox4
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(143, 214);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(10, 13);
-            this.label16.TabIndex = 29;
-            this.label16.Text = "-";
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Items.AddRange(new object[] {
+            "пищевые отходы",
+            "бумага, металл",
+            "текстиль, шерсть",
+            "дерево, кожаные изделия",
+            "кирпич/камень"});
+            this.comboBox4.Location = new System.Drawing.Point(200, 286);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(121, 21);
+            this.comboBox4.TabIndex = 25;
             // 
             // Form1
             // 
@@ -365,6 +390,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 461);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.comboBox4);
+            this.Controls.Add(this.label17);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.textBox5);
@@ -421,6 +448,8 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.ComboBox comboBox4;
     }
 }
 
