@@ -186,11 +186,14 @@ namespace WindowsFormsApp4
 
             USH = M * 5 * Kkat;          //   размер вреда
 
-            label10.Visible = true;
-            label10.Text = Convert.ToString(SP);
-            label12.Text = Convert.ToString(S);         
-            label14.Text = Convert.ToString(V);
-            label16.Text = Convert.ToString(R);
+            ;
+            label16.Text = Convert.ToString(SP);
+            label17.Text = Convert.ToString(V);
+            label18.Text = Convert.ToString(Vf);
+            label19.Text = Convert.ToString(M);
+            label20.Text = Convert.ToString(USH);
+           // label21.Text = Convert.ToString(V);
+
             panel1.Visible = true;
 
         }
