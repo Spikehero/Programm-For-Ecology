@@ -291,7 +291,7 @@
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.label9);
-            this.panel1.Location = new System.Drawing.Point(2, 1);
+            this.panel1.Location = new System.Drawing.Point(410, 237);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(483, 458);
             this.panel1.TabIndex = 23;
@@ -374,7 +374,7 @@
             // 
             this.comboBox4.FormattingEnabled = true;
             this.comboBox4.Items.AddRange(new object[] {
-            "пищевые отходы",
+            "пищевые отходы, резина, пластик",
             "бумага, металл",
             "текстиль, шерсть",
             "дерево, кожаные изделия",
