@@ -14,7 +14,7 @@ namespace WindowsFormsApp4
     public partial class Form1 : Form
     {
         int h1 = 440,IndexY = 0 ;
-        double S, H, V, K1, AO, BHO, OB, IC, Kvp, Vf, M, Kov = 0.5;
+        double S, H, V, K1, AO, BHO, OB, IC, Kvp, Vf, M, R, L, SP, ST, AP, Kkat, USH, Kov = 0.5;
         string selection1;
 
         static double[][] osad = new double[][] {           //   Массив с коэффицентами для осадков
@@ -44,13 +44,16 @@ namespace WindowsFormsApp4
 
         static double[] vid = new double[]          //   массив с коэффицентами для видов поверхностей
         {0.20, 0.30, 0.40, 0.50, 0.50, 0.56, 0.58, 0.60, 0.85, 0.90, 0.90};
-        
+
+        static double[] kat = new double[]          //   массив с коэффицентами для категорий земель
+        {2, 1.9, 1.9, 1.8, 1.6, 1.5, 1.3, 1};
+
         private void button2_Click_1(object sender, EventArgs e)            //   кнопка "Назад" на панели
         {
             panel1.Visible = false;
         }
 
-        static double GetV(double S, double H = 0, string selection1 = "")          //   метод для нахождения объёма
+        static double GetV(double S, double H, string selection1 = "")          //   метод для нахождения объёма
         {
             switch (selection1)         //   свич, выбирающий форму
             {
@@ -70,6 +73,50 @@ namespace WindowsFormsApp4
                     return 0;
                   //  break;
             }
+        }
+
+        static double GetSP(double L, double S, double R, double AP, double ST, double H, string selection1 = "")         //   находим площадь поверхности фигур
+        {
+            switch (selection1)         //   свич, выбирающий форму
+            {
+                case "конус":
+                   return (S +(3.14 * R * L));         
+                  
+                    
+                //break;
+
+                case "пирамида":
+                    return (S + 4 * (AP * (ST/2)));
+                // break;
+
+                case "параллелепипед":
+                    return (2 * S +(4 * (Math.Sqrt(S)* H)));
+                // break;
+
+                default:
+                    return 0;
+                    //  break;
+            }
+        } 
+
+        static double GetRad(double S)          //   получение радиуса конуса из площади
+        {
+            return (Math.Sqrt(S / 3.14));
+        }
+
+        static double GetL(double R, double H)          //   получение образующей конуса
+        {
+            return (Math.Sqrt(H*H + R*R));
+        }
+
+        static double GetST(double S)          //   получение длины стороны пирамиды из площади
+        {
+            return (Math.Sqrt(S));
+        }
+
+        static double GetAP(double H, double ST)          //   получение длины апофемы пирамиды
+        {
+            return (Math.Sqrt(((ST / 2) * (ST/2)) + (H*H)));
         }
 
         private void comboBox1_MouseHover(object sender, EventArgs e)            //   разворачивается список при наведении
@@ -102,22 +149,12 @@ namespace WindowsFormsApp4
         {
             S = double.Parse(textBox1.Text);
         }
-
-        private void comboBox1_TextChanged(object sender, EventArgs e)          //   получение данных о форме при клавиатурном вводе
-        {
-            selection1 = comboBox1.Text.ToString();
-        }
-            
+                           
         private void textBox2_TextChanged(object sender, EventArgs e)           //   получение переменной высоты
         {
             H = double.Parse(textBox2.Text);
         }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)         //  получение данных о форме при выборе из списка
-        {
-            selection1 = comboBox1.SelectedItem.ToString();
-        }
-              
+           
                 public Form1()          //  здраствуй, форма
         {
             InitializeComponent();
@@ -127,25 +164,36 @@ namespace WindowsFormsApp4
         {
             selection1 = comboBox1.Text.ToString();         //   так, похоже, можно с самого начала было делать
             V = GetV(S, H, selection1);         //   получаем объём свалки
-            BHO = (0.15 * V);
-            
+            R = GetRad(S);          //   радиус основания конуса
+            L = GetL(R, H);         //   образующая конуса
+            ST = GetST(S);          //   сторона основания пирамиды или параллелепипеда
+            AP = GetAP(H, ST);          //   апофема пирамиды
+            SP = GetSP(L, S, R, AP, ST, H, selection1);         //   площадь поверхности фигуры
+
+            BHO = (0.15 * V);           //   влага, расходуемая на насыщение отходов
             
             h1 = Convert.ToInt32(numericUpDown1.Text);          //   получаем значение из нумерика
             IndexY = GetIndex(h1);          //   получаем индекс коэффицента осадков
             K1 = osad[IndexY][1];           //   находим коэффицент
-            // h1 = numericUpDown1.Value;
-            AO = 0.001 * S * h1 * K1;
+            AO = 0.001 * S * h1 * K1;           //   атмосферные осадки
             Kvp = vid[comboBox3.Items.IndexOf(comboBox3.Text)];
-            IC = 0.01 * S * 54 * 1.113 * Kvp; 
-            OB = Kov * (AO - IC);
-            Vf = (AO + OB) - (IC + BHO);            //   самая большая и самая страшная формула
+            Kkat = kat[comboBox2.Items.IndexOf(comboBox2.Text)];            //   получаем значение коэффицента чего-то, в зависимости от категории земель
+            IC = 0.01 * SP * 54 * 1.113 * Kvp;          //   испарение с поверхности полигона
+            OB = Kov * (AO - IC);           //   отжимная влага
+            Vf = Math.Abs ((AO + OB) - (IC + BHO));            //   самая большая и самая страшная формула, объём фильтрата
             M = V * 0.45;           //   масса отходов
-            
-            label10.Visible = true;
-            label10.Text = Convert.ToString(Vf);
-            label12.Text = Convert.ToString(S);         //   Там нужна площадь ПОВЕРХНОСТИ!!! надо переделать
-            label14.Text = Convert.ToString(V);
-            label16.Text = Convert.ToString(M);
+
+
+            USH = M * 5 * Kkat;          //   размер вреда
+
+            ;
+            label16.Text = Convert.ToString(SP);
+            label17.Text = Convert.ToString(V);
+            label18.Text = Convert.ToString(Vf);
+            label19.Text = Convert.ToString(M);
+            label20.Text = Convert.ToString(USH);
+           // label21.Text = Convert.ToString(V);
+
             panel1.Visible = true;
 
         }
