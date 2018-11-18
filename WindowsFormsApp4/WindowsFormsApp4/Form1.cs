@@ -13,9 +13,21 @@ namespace WindowsFormsApp4
 
     public partial class Form1 : Form
     {
-        int h1 = 440,IndexY = 0 ;
-        double S, H, V, K1, AO, BHO, OB, IC, Kvp, Vf, M, R, L, SP, ST, AP, Kkat, USH, Kov = 0.5;
+        int h1 = 440,IndexY = 0, KeoM1, KeoM2, Keo1 = 0, Keo2 = 0;
+        double S, H, V, K1, AO, BHO, OB, IC, Kvp, Vf, M, R, L, SP, ST, AP, Kkat, USH, LK, T, Kov = 0.5;
         string selection1;
+
+        private void comboBox4_MouseHover(object sender, EventArgs e)
+        {
+            var box = sender as ComboBox;
+            box.DroppedDown = true;
+        }
+
+        private void comboBox2_MouseHover(object sender, EventArgs e)
+        {
+            var box = sender as ComboBox;
+            box.DroppedDown = true;
+        }
 
         static double[][] osad = new double[][] {           //   Массив с коэффицентами для осадков
             new double[] { 440, 1.37 },
@@ -48,30 +60,29 @@ namespace WindowsFormsApp4
         static double[] kat = new double[]          //   массив с коэффицентами для категорий земель
         {2, 1.9, 1.9, 1.8, 1.6, 1.5, 1.3, 1};
 
+        static int[] sost = new int[]          //   массив с условными значениями для состава отходов
+        {1, 2, 3, 4, 5};
+
         private void button2_Click_1(object sender, EventArgs e)            //   кнопка "Назад" на панели
         {
             panel1.Visible = false;
         }
-
+        
         static double GetV(double S, double H, string selection1 = "")          //   метод для нахождения объёма
         {
             switch (selection1)         //   свич, выбирающий форму
             {
                 case "конус":
                     return (S * H) / 3;
-                    //break;
-
+          
                 case "пирамида":
                     return (S * H) / 3;
-                   // break;
 
                 case "параллелепипед":
                     return (S * H);
-                   // break;
-
+           
                 default:
                     return 0;
-                  //  break;
             }
         }
 
@@ -80,22 +91,16 @@ namespace WindowsFormsApp4
             switch (selection1)         //   свич, выбирающий форму
             {
                 case "конус":
-                   return (S +(3.14 * R * L));         
-                  
-                    
-                //break;
+                   return (S +(3.14 * R * L));
 
                 case "пирамида":
                     return (S + 4 * (AP * (ST/2)));
-                // break;
 
                 case "параллелепипед":
                     return (2 * S +(4 * (Math.Sqrt(S)* H)));
-                // break;
-
+           
                 default:
                     return 0;
-                    //  break;
             }
         } 
 
@@ -119,6 +124,72 @@ namespace WindowsFormsApp4
             return (Math.Sqrt(((ST / 2) * (ST/2)) + (H*H)));
         }
 
+        static int GetKeoM1(int Keo1, double S,  double LK, double T, double Vf, double USH)            //   проверка значений по первому классу опасности
+        {
+            
+            if (S >= 20)
+            {
+               Keo1++;
+            }
+
+            if (LK <= 50)
+            {
+               Keo1++;
+            }
+
+            if (T >= 2)
+            {
+                Keo1++;
+            }
+    
+            if (Vf >= 15)
+            {
+                Keo1++;
+            }
+
+            if (USH >= 10)
+            {
+                Keo1++;
+            }
+
+
+
+            return Keo1; 
+        }
+
+        static int GetKeoM2(int Keo1, double S, double LK, double T, double Vf, double USH)
+        {
+
+            if (S < 20 && S >= 15)
+            {
+                Keo1++;
+            }
+
+            if (LK <= 50 && LK < 100)
+            {
+                Keo1++;
+            }
+
+            if (T >= 1.5 && T < 2)
+            {
+                Keo1++;
+            }
+
+            if (Vf >= 10 && Vf < 15)
+            {
+                Keo1++;
+            }
+
+            if (USH >= 5 && USH < 10)
+            {
+                Keo1++;
+            }
+
+
+
+            return Keo1;
+        }
+
         private void comboBox1_MouseHover(object sender, EventArgs e)            //   разворачивается список при наведении
         {
             var box = sender as ComboBox;
@@ -139,23 +210,13 @@ namespace WindowsFormsApp4
                     {
                     return i;
                     }
-               // IndexY = GetIndex(h1);
             }
 
             return 0;    
         }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)           //   получения переменной площади
-        {
-            S = double.Parse(textBox1.Text);
-        }
-                           
-        private void textBox2_TextChanged(object sender, EventArgs e)           //   получение переменной высоты
-        {
-            H = double.Parse(textBox2.Text);
-        }
-           
-                public Form1()          //  здраствуй, форма
+                        
+     
+        public Form1()          //  здраствуй, форма
         {
             InitializeComponent();
         }
@@ -163,6 +224,43 @@ namespace WindowsFormsApp4
         private void button1_Click(object sender, EventArgs e)          //   кнопка 
         {
             selection1 = comboBox1.Text.ToString();         //   так, похоже, можно с самого начала было делать
+
+            if (textBox1.Text == (""))
+            {  MessageBox.Show("Заполните поле", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            return; }
+            else {
+                S = Convert.ToDouble(textBox1.Text); };           //   забираем значение площади свалки
+
+            if (textBox2.Text == (""))
+            {
+                MessageBox.Show("Заполните поле", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                return;
+            }
+            else
+            {
+                H = Convert.ToDouble(textBox2.Text);
+            };           //   забираем значение высоты свалки
+
+            if (textBox3.Text == (""))
+            {
+                MessageBox.Show("Заполните поле", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                return;
+            }
+            else
+            {
+                LK = Convert.ToDouble(textBox3.Text);
+            };           //   забираем значение удалённости свалки
+
+            if (textBox4.Text == (""))
+            {
+                MessageBox.Show("Заполните поле", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                return;
+            }
+            else
+            {
+                T = Convert.ToDouble(textBox4.Text);
+            };           //   забираем значение удалённости свалки
+
             V = GetV(S, H, selection1);         //   получаем объём свалки
             R = GetRad(S);          //   радиус основания конуса
             L = GetL(R, H);         //   образующая конуса
@@ -185,15 +283,15 @@ namespace WindowsFormsApp4
 
 
             USH = M * 5 * Kkat;          //   размер вреда
-
-            ;
+            KeoM1 = GetKeoM1(Keo1, S, LK, T, Vf, USH);
+            KeoM2 = GetKeoM2(Keo2, S, LK, T, Vf, USH);
             label16.Text = Convert.ToString(SP);
             label17.Text = Convert.ToString(V);
             label18.Text = Convert.ToString(Vf);
             label19.Text = Convert.ToString(M);
             label20.Text = Convert.ToString(USH);
-           // label21.Text = Convert.ToString(V);
-
+            label21.Text = Convert.ToString(KeoM2);
+           // Keo1 = 0;
             panel1.Visible = true;
 
         }
