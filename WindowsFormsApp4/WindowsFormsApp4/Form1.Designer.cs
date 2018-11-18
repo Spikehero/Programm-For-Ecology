@@ -47,20 +47,20 @@
             this.label7 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -132,7 +132,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 8;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // textBox2
             // 
@@ -140,7 +139,6 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 9;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // comboBox1
             // 
@@ -174,6 +172,8 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(252, 21);
             this.comboBox2.TabIndex = 11;
+            this.comboBox2.Text = "Особо охраняемые территории";
+            this.comboBox2.MouseHover += new System.EventHandler(this.comboBox2_MouseHover);
             // 
             // textBox3
             // 
@@ -288,11 +288,83 @@
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label12);
-            this.panel1.Location = new System.Drawing.Point(2, 2);
+            this.panel1.Location = new System.Drawing.Point(2, 1);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(483, 458);
             this.panel1.TabIndex = 23;
             this.panel1.Visible = false;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(204, 187);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(10, 13);
+            this.label21.TabIndex = 36;
+            this.label21.Text = "-";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(207, 151);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(10, 13);
+            this.label20.TabIndex = 35;
+            this.label20.Text = "-";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(131, 117);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(10, 13);
+            this.label19.TabIndex = 34;
+            this.label19.Text = "-";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(136, 86);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(10, 13);
+            this.label18.TabIndex = 33;
+            this.label18.Text = "-";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(138, 53);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(10, 13);
+            this.label17.TabIndex = 32;
+            this.label17.Text = "-";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(216, 22);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(10, 13);
+            this.label16.TabIndex = 31;
+            this.label16.Text = "-";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(18, 187);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(179, 13);
+            this.label15.TabIndex = 30;
+            this.label15.Text = "Класс экологической опасности :";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(21, 151);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(179, 13);
+            this.label14.TabIndex = 29;
+            this.label14.Text = "Размер вреда почвам, тыс. руб. =";
             // 
             // label13
             // 
@@ -353,78 +425,8 @@
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(252, 21);
             this.comboBox4.TabIndex = 25;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(21, 151);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(179, 13);
-            this.label14.TabIndex = 29;
-            this.label14.Text = "Размер вреда почвам, тыс. руб. =";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(18, 187);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(179, 13);
-            this.label15.TabIndex = 30;
-            this.label15.Text = "Класс экологической опасности :";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(216, 22);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(10, 13);
-            this.label16.TabIndex = 31;
-            this.label16.Text = "-";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(138, 53);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(10, 13);
-            this.label17.TabIndex = 32;
-            this.label17.Text = "-";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(136, 86);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(10, 13);
-            this.label18.TabIndex = 33;
-            this.label18.Text = "-";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(131, 117);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(10, 13);
-            this.label19.TabIndex = 34;
-            this.label19.Text = "-";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(207, 151);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(10, 13);
-            this.label20.TabIndex = 35;
-            this.label20.Text = "-";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(204, 187);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(10, 13);
-            this.label21.TabIndex = 36;
-            this.label21.Text = "-";
+            this.comboBox4.Text = "пищевые отходы, резина, пластик";
+            this.comboBox4.MouseHover += new System.EventHandler(this.comboBox4_MouseHover);
             // 
             // Form1
             // 
