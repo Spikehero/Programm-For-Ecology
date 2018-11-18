@@ -13,7 +13,7 @@ namespace WindowsFormsApp4
 
     public partial class Form1 : Form
     {
-        int h1 = 440,IndexY = 0, KeoM1, KeoM2, Keo1 = 0, Keo2 = 0;
+        int h1 = 440, IndexY = 0, KeoM1, KeoM2, KeoM3, KeoM4, KeoM5, Keo1 = 0, Ksost, Main;
         double S, H, V, K1, AO, BHO, OB, IC, Kvp, Vf, M, R, L, SP, ST, AP, Kkat, USH, LK, T, Kov = 0.5;
         string selection1;
 
@@ -67,20 +67,20 @@ namespace WindowsFormsApp4
         {
             panel1.Visible = false;
         }
-        
+
         static double GetV(double S, double H, string selection1 = "")          //   метод для нахождения объёма
         {
             switch (selection1)         //   свич, выбирающий форму
             {
                 case "конус":
                     return (S * H) / 3;
-          
+
                 case "пирамида":
                     return (S * H) / 3;
 
                 case "параллелепипед":
                     return (S * H);
-           
+
                 default:
                     return 0;
             }
@@ -91,18 +91,18 @@ namespace WindowsFormsApp4
             switch (selection1)         //   свич, выбирающий форму
             {
                 case "конус":
-                   return (S +(3.14 * R * L));
+                    return (S + (3.14 * R * L));
 
                 case "пирамида":
-                    return (S + 4 * (AP * (ST/2)));
+                    return (S + 4 * (AP * (ST / 2)));
 
                 case "параллелепипед":
-                    return (2 * S +(4 * (Math.Sqrt(S)* H)));
-           
+                    return (2 * S + (4 * (Math.Sqrt(S) * H)));
+
                 default:
                     return 0;
             }
-        } 
+        }
 
         static double GetRad(double S)          //   получение радиуса конуса из площади
         {
@@ -111,7 +111,7 @@ namespace WindowsFormsApp4
 
         static double GetL(double R, double H)          //   получение образующей конуса
         {
-            return (Math.Sqrt(H*H + R*R));
+            return (Math.Sqrt(H * H + R * R));
         }
 
         static double GetST(double S)          //   получение длины стороны пирамиды из площади
@@ -121,27 +121,32 @@ namespace WindowsFormsApp4
 
         static double GetAP(double H, double ST)          //   получение длины апофемы пирамиды
         {
-            return (Math.Sqrt(((ST / 2) * (ST/2)) + (H*H)));
+            return (Math.Sqrt(((ST / 2) * (ST / 2)) + (H * H)));
         }
 
-        static int GetKeoM1(int Keo1, double S,  double LK, double T, double Vf, double USH)            //   проверка значений по первому классу опасности
+        static int GetKeoM1(int Keo1, int Ksost, double S, double LK, double T, double Vf, double USH)         //   проверка значений по первому классу опасности
         {
-            
+
             if (S >= 20)
             {
-               Keo1++;
+                Keo1++;
+            }
+
+            if (Ksost == 1)
+            {
+                Keo1++;
             }
 
             if (LK <= 50)
             {
-               Keo1++;
+                Keo1++;
             }
 
             if (T >= 2)
             {
                 Keo1++;
             }
-    
+
             if (Vf >= 15)
             {
                 Keo1++;
@@ -154,13 +159,18 @@ namespace WindowsFormsApp4
 
 
 
-            return Keo1; 
+            return Keo1;
         }
 
-        static int GetKeoM2(int Keo1, double S, double LK, double T, double Vf, double USH)
+        static int GetKeoM2(int Keo1, int Ksost, double S, double LK, double T, double Vf, double USH)          //   проверка значений по второму классу опасности
         {
 
             if (S < 20 && S >= 15)
+            {
+                Keo1++;
+            }
+
+            if (Ksost == 2)
             {
                 Keo1++;
             }
@@ -188,6 +198,136 @@ namespace WindowsFormsApp4
 
 
             return Keo1;
+        }
+
+        static int GetKeoM3(int Keo1, int Ksost, double S, double LK, double T, double Vf, double USH)          //   проверка значений по третьему классу опасности
+        {
+
+            if (S < 15 && S >= 10)
+            {
+                Keo1++;
+            }
+
+            if (Ksost == 3)
+            {
+                Keo1++;
+            }
+
+            if (LK <= 100 && LK < 200)
+            {
+                Keo1++;
+            }
+
+            if (T >= 1.5 && T < 2)
+            {
+                Keo1++;
+            }
+
+            if (Vf >= 10 && Vf < 15)
+            {
+                Keo1++;
+            }
+
+            if (USH >= 2 && USH < 5)
+            {
+                Keo1++;
+            }
+
+
+
+            return Keo1;
+        }
+
+        static int GetKeoM4(int Keo1, int Ksost, double S, double LK, double T, double Vf, double USH)          //   проверка значений по четвёртому классу опасности
+        {
+
+            if (S < 10 && S >= 5)
+            {
+                Keo1++;
+            }
+
+            if (Ksost == 4)
+            {
+                Keo1++;
+            }
+
+            if (LK <= 200 && LK < 300)
+            {
+                Keo1++;
+            }
+
+            if (T >= 1 && T < 1.5)
+            {
+                Keo1++;
+            }
+
+            if (Vf >= 5 && Vf < 10)
+            {
+                Keo1++;
+            }
+
+            if (USH >= 1 && USH < 2)
+            {
+                Keo1++;
+            }
+
+
+
+            return Keo1;
+        }
+
+        static int GetKeoM5(int Keo1, int Ksost, double S, double LK, double T, double Vf, double USH)          //   проверка значений по пятому классу опасности
+        {
+
+            if (S > 5)
+            {
+                Keo1++;
+            }
+
+            if (Ksost == 5)
+            {
+                Keo1++;
+            }
+
+            if (LK > 300)
+            {
+                Keo1++;
+            }
+
+            if (T < 1)
+            {
+                Keo1++;
+            }
+
+            if (Vf < 5)
+            {
+                Keo1++;
+            }
+
+            if (USH < 1)
+            {
+                Keo1++;
+            }
+
+
+
+            return Keo1;
+        }
+
+        static int GetMain(int KeoM1, int KeoM2, int KeoM3, int KeoM4, int KeoM5)
+        {
+            if (KeoM1 >= 3)
+            { return 1; }
+            else if ((KeoM2 >= 3) || (KeoM2 == 2 && (KeoM1 < 3 && KeoM1 >= 1)))
+            { return 2; }
+            else if ((KeoM3 >= 3) || (KeoM3 == 2 && (KeoM2 < 3 && KeoM2 >= 1)))
+            { return 3; }
+            else if ((KeoM4 >= 3) || (KeoM4 == 2 && (KeoM3 < 3 && KeoM3 >= 1)))
+            { return 4; }
+            else if ((KeoM5 >= 3) || (KeoM5 == 2 && (KeoM4 < 3 && KeoM4 >= 1)))
+            { return 5; }
+            else
+                return 0;
         }
 
         private void comboBox1_MouseHover(object sender, EventArgs e)            //   разворачивается список при наведении
@@ -276,6 +416,7 @@ namespace WindowsFormsApp4
             AO = 0.001 * S * h1 * K1;           //   атмосферные осадки
             Kvp = vid[comboBox3.Items.IndexOf(comboBox3.Text)];
             Kkat = kat[comboBox2.Items.IndexOf(comboBox2.Text)];            //   получаем значение коэффицента чего-то, в зависимости от категории земель
+            Ksost = sost[comboBox4.Items.IndexOf(comboBox4.Text)];          //   получаем условные значения для состава отходов
             IC = 0.01 * SP * 54 * 1.113 * Kvp;          //   испарение с поверхности полигона
             OB = Kov * (AO - IC);           //   отжимная влага
             Vf = Math.Abs ((AO + OB) - (IC + BHO));            //   самая большая и самая страшная формула, объём фильтрата
@@ -283,15 +424,18 @@ namespace WindowsFormsApp4
 
 
             USH = M * 5 * Kkat;          //   размер вреда
-            KeoM1 = GetKeoM1(Keo1, S, LK, T, Vf, USH);
-            KeoM2 = GetKeoM2(Keo2, S, LK, T, Vf, USH);
+            KeoM1 = GetKeoM1(Keo1, Ksost, S, LK, T, Vf, USH);           //   получаем колличество верных значений
+            KeoM2 = GetKeoM2(Keo1, Ksost, S, LK, T, Vf, USH);
+            KeoM3 = GetKeoM3(Keo1, Ksost, S, LK, T, Vf, USH);
+            KeoM4 = GetKeoM4(Keo1, Ksost, S, LK, T, Vf, USH);
+            KeoM5 = GetKeoM5(Keo1, Ksost, S, LK, T, Vf, USH);
+            Main = GetMain(KeoM1, KeoM2, KeoM3, KeoM4, KeoM5);          //   ВОТ ОНО!!!!!!
             label16.Text = Convert.ToString(SP);
             label17.Text = Convert.ToString(V);
             label18.Text = Convert.ToString(Vf);
             label19.Text = Convert.ToString(M);
             label20.Text = Convert.ToString(USH);
-            label21.Text = Convert.ToString(KeoM2);
-           // Keo1 = 0;
+            label21.Text = Convert.ToString(Main);
             panel1.Visible = true;
 
         }
