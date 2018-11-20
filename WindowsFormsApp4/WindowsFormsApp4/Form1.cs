@@ -383,6 +383,11 @@ namespace WindowsFormsApp4
                 try
                 {
                     S = Convert.ToDouble(textBox1.Text);          //   забираем значение площади свалки
+                    if (S<=0)
+                    {
+                        MessageBox.Show("Неверный формат данных!");
+                        return;
+                    }
                 }
                 catch
                 {
@@ -402,6 +407,12 @@ namespace WindowsFormsApp4
                 try
                 {
                     H = Convert.ToDouble(textBox2.Text);         //   забираем значение высоты свалки
+
+                    if (H <= 0)
+                    {
+                        MessageBox.Show("Неверный формат данных!");
+                        return;
+                    }
                 }
                 catch
                 {
@@ -423,6 +434,12 @@ namespace WindowsFormsApp4
                 try
                 {
                     LK = Convert.ToDouble(textBox3.Text);           //   забираем значение удалённости свалки
+
+                    if (LK <= 0)
+                    {
+                        MessageBox.Show("Неверный формат данных!");
+                        return;
+                    }
                 }
                 catch
                 {
@@ -444,7 +461,13 @@ namespace WindowsFormsApp4
                      try
                           {
                               T = Convert.ToDouble(textBox4.Text);           //   забираем значение удалённости свалки
-                          }
+
+                    if (S <= 0)
+                    {
+                        MessageBox.Show("Неверный формат данных!");
+                        return;
+                    }
+                }
                          catch
                             {
                                 MessageBox.Show("Неверный формат данных!");
