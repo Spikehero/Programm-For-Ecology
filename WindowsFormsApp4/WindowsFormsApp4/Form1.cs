@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace WindowsFormsApp4
 {
@@ -369,6 +370,8 @@ namespace WindowsFormsApp4
             {  MessageBox.Show("Заполните поле", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             return; }
             else {
+                textBox1.Text = textBox1.Text.Replace(".", ",");
+
                 S = Convert.ToDouble(textBox1.Text); };           //   забираем значение площади свалки
 
             if (textBox2.Text == (""))
@@ -378,6 +381,8 @@ namespace WindowsFormsApp4
             }
             else
             {
+                textBox2.Text = textBox2.Text.Replace(".", ",");
+
                 H = Convert.ToDouble(textBox2.Text);
             };           //   забираем значение высоты свалки
 
@@ -388,6 +393,7 @@ namespace WindowsFormsApp4
             }
             else
             {
+                textBox3.Text = textBox3.Text.Replace(".", ",");
                 LK = Convert.ToDouble(textBox3.Text);
             };           //   забираем значение удалённости свалки
 
@@ -398,6 +404,7 @@ namespace WindowsFormsApp4
             }
             else
             {
+                textBox4.Text = textBox4.Text.Replace(".", ",");
                 T = Convert.ToDouble(textBox4.Text);
             };           //   забираем значение удалённости свалки
 
