@@ -83,6 +83,8 @@ namespace WindowsFormsApp4
                     return (S * H);
 
                 default:
+                   
+                    { MessageBox.Show("Неверно указана форма", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); }
                     return 0;
             }
         }
@@ -345,18 +347,18 @@ namespace WindowsFormsApp4
 
         static int GetIndex(int h1)         //   получения индекса для коэффицента осадков
         {
-            for (int i=0; i<22; i++)
+            for (int i = 0; i < 22; i++)
             {
-                if (osad [i][0] == h1)
-                    {
+                if (osad[i][0] == h1)
+                {
                     return i;
-                    }
+                }
             }
 
-            return 0;    
+            return 0;
         }
-                        
-     
+
+
         public Form1()          //  здраствуй, форма
         {
             InitializeComponent();
@@ -366,85 +368,128 @@ namespace WindowsFormsApp4
         {
             selection1 = comboBox1.Text.ToString();         //   так, похоже, можно с самого начала было делать
 
-            if (textBox1.Text == (""))
-            {  MessageBox.Show("Заполните поле", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            return; }
-            else {
+            if ((textBox1.Text == ("")) || (textBox1.Text == "0"))
+            {
+                MessageBox.Show("Заполните поле", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                return;
+            }
+            else
+            {
                 textBox1.Text = textBox1.Text.Replace(".", ",");
-
-                S = Convert.ToDouble(textBox1.Text); };           //   забираем значение площади свалки
-
-            if (textBox2.Text == (""))
-            {
-                MessageBox.Show("Заполните поле", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                return;
+                try
+                {
+                    S = Convert.ToDouble(textBox1.Text);          //   забираем значение площади свалки
+                }
+                catch
+                {
+                    MessageBox.Show("Неверный формат данных!");
+                    return;
+                }
             }
-            else
-            {
-                textBox2.Text = textBox2.Text.Replace(".", ",");
 
-                H = Convert.ToDouble(textBox2.Text);
-            };           //   забираем значение высоты свалки
+                if ((textBox2.Text == ("")) || (textBox2.Text == "0"))
+                {
+                    MessageBox.Show("Заполните поле", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    return;
+                }
+                else
+                {
+                    textBox2.Text = textBox2.Text.Replace(".", ",");
+                try
+                {
+                    H = Convert.ToDouble(textBox2.Text);         //   забираем значение высоты свалки
+                }
+                catch
+                {
+                    MessageBox.Show("Неверный формат данных!");
+                    return;
+                }
+                
+                };
 
-            if (textBox3.Text == (""))
-            {
-                MessageBox.Show("Заполните поле", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                return;
-            }
-            else
-            {
-                textBox3.Text = textBox3.Text.Replace(".", ",");
-                LK = Convert.ToDouble(textBox3.Text);
-            };           //   забираем значение удалённости свалки
+            if ((textBox3.Text == ("")) || (textBox3.Text == "0"))
+                {
+                    MessageBox.Show("Заполните поле", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    return;
+                }
+                else
+                {
+                    textBox3.Text = textBox3.Text.Replace(".", ",");
 
-            if (textBox4.Text == (""))
-            {
-                MessageBox.Show("Заполните поле", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                return;
-            }
-            else
-            {
-                textBox4.Text = textBox4.Text.Replace(".", ",");
-                T = Convert.ToDouble(textBox4.Text);
-            };           //   забираем значение удалённости свалки
+                try
+                {
+                    LK = Convert.ToDouble(textBox3.Text);           //   забираем значение удалённости свалки
+                }
+                catch
+                {
+                    MessageBox.Show("Неверный формат данных!");
+                    return;
+                }
+               
+                };           
 
-            V = GetV(S, H, selection1);         //   получаем объём свалки
+                if ((textBox4.Text == ("")) || (textBox1.Text == "0"))
+                {
+                    MessageBox.Show("Заполните поле", "Error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    return;
+                }
+                else
+                   {
+                    textBox4.Text = textBox4.Text.Replace(".", ",");
+
+                     try
+                          {
+                              T = Convert.ToDouble(textBox4.Text);           //   забираем значение удалённости свалки
+                          }
+                         catch
+                            {
+                                MessageBox.Show("Неверный формат данных!");
+                                return;
+                            }
+
+                };           
+
+                V = GetV(S, H, selection1);         //   получаем объём свалки
+            if (V == 0)
+            { return; }
+
             R = GetRad(S);          //   радиус основания конуса
-            L = GetL(R, H);         //   образующая конуса
-            ST = GetST(S);          //   сторона основания пирамиды или параллелепипеда
-            AP = GetAP(H, ST);          //   апофема пирамиды
-            SP = GetSP(L, S, R, AP, ST, H, selection1);         //   площадь поверхности фигуры
+                L = GetL(R, H);         //   образующая конуса
+                ST = GetST(S);          //   сторона основания пирамиды или параллелепипеда
+                AP = GetAP(H, ST);          //   апофема пирамиды
+                SP = GetSP(L, S, R, AP, ST, H, selection1);         //   площадь поверхности фигуры
 
-            BHO = (0.15 * V);           //   влага, расходуемая на насыщение отходов
-            
-            h1 = Convert.ToInt32(numericUpDown1.Text);          //   получаем значение из нумерика
-            IndexY = GetIndex(h1);          //   получаем индекс коэффицента осадков
-            K1 = osad[IndexY][1];           //   находим коэффицент
-            AO = 0.001 * S * h1 * K1;           //   атмосферные осадки
-            Kvp = vid[comboBox3.Items.IndexOf(comboBox3.Text)];
-            Kkat = kat[comboBox2.Items.IndexOf(comboBox2.Text)];            //   получаем значение коэффицента чего-то, в зависимости от категории земель
-            Ksost = sost[comboBox4.Items.IndexOf(comboBox4.Text)];          //   получаем условные значения для состава отходов
-            IC = 0.01 * SP * 54 * 1.113 * Kvp;          //   испарение с поверхности полигона
-            OB = Kov * (AO - IC);           //   отжимная влага
-            Vf = Math.Abs ((AO + OB) - (IC + BHO));            //   самая большая и самая страшная формула, объём фильтрата
-            M = V * 0.45;           //   масса отходов
+                BHO = (0.15 * V);           //   влага, расходуемая на насыщение отходов
+
+                h1 = Convert.ToInt32(numericUpDown1.Text);          //   получаем значение из нумерика
+                IndexY = GetIndex(h1);          //   получаем индекс коэффицента осадков
+                K1 = osad[IndexY][1];           //   находим коэффицент
+                AO = 0.001 * S * h1 * K1;           //   атмосферные осадки
+                Kvp = vid[comboBox3.Items.IndexOf(comboBox3.Text)];
+                Kkat = kat[comboBox2.Items.IndexOf(comboBox2.Text)];            //   получаем значение коэффицента чего-то, в зависимости от категории земель
+                Ksost = sost[comboBox4.Items.IndexOf(comboBox4.Text)];          //   получаем условные значения для состава отходов
+                IC = 0.01 * SP * 54 * 1.113 * Kvp;          //   испарение с поверхности полигона
+                OB = Kov * (AO - IC);           //   отжимная влага
+                Vf = Math.Abs((AO + OB) - (IC + BHO));            //   самая большая и самая страшная формула, объём фильтрата
+                M = V * 0.45;           //   масса отходов
 
 
-            USH = M * 5 * Kkat;          //   размер вреда
-            KeoM1 = GetKeoM1(Keo1, Ksost, S, LK, T, Vf, USH);           //   получаем колличество верных значений
-            KeoM2 = GetKeoM2(Keo1, Ksost, S, LK, T, Vf, USH);
-            KeoM3 = GetKeoM3(Keo1, Ksost, S, LK, T, Vf, USH);
-            KeoM4 = GetKeoM4(Keo1, Ksost, S, LK, T, Vf, USH);
-            KeoM5 = GetKeoM5(Keo1, Ksost, S, LK, T, Vf, USH);
-            Main = GetMain(KeoM1, KeoM2, KeoM3, KeoM4, KeoM5);          //   ВОТ ОНО!!!!!!
-            label16.Text = Convert.ToString(SP);
-            label17.Text = Convert.ToString(V);
-            label18.Text = Convert.ToString(Vf);
-            label19.Text = Convert.ToString(M);
-            label20.Text = Convert.ToString(USH);
-            label21.Text = Convert.ToString(Main);
-            panel1.Visible = true;
+                USH = M * 5 * Kkat;          //   размер вреда
+                KeoM1 = GetKeoM1(Keo1, Ksost, S, LK, T, Vf, USH);           //   получаем колличество верных значений
+                KeoM2 = GetKeoM2(Keo1, Ksost, S, LK, T, Vf, USH);
+                KeoM3 = GetKeoM3(Keo1, Ksost, S, LK, T, Vf, USH);
+                KeoM4 = GetKeoM4(Keo1, Ksost, S, LK, T, Vf, USH);
+                KeoM5 = GetKeoM5(Keo1, Ksost, S, LK, T, Vf, USH);
+                Main = GetMain(KeoM1, KeoM2, KeoM3, KeoM4, KeoM5);          //   ВОТ ОНО!!!!!!
+                label16.Text = Convert.ToString(SP);
+                label17.Text = Convert.ToString(V);
+                label18.Text = Convert.ToString(Vf);
+                label19.Text = Convert.ToString(M);
+                label20.Text = Convert.ToString(USH);
+                label21.Text = Convert.ToString(Main);
+                panel1.Visible = true;
 
+            }
         }
     }
-}
+
