@@ -362,6 +362,10 @@ namespace WindowsFormsApp4
         public Form1()          //  здраствуй, форма
         {
             InitializeComponent();
+            comboBox1.SelectedIndex = 1;
+            comboBox2.SelectedIndex = 1;
+            comboBox3.SelectedIndex = 1;
+            comboBox4.SelectedIndex = 1;
         }
 
         private void button1_Click(object sender, EventArgs e)          //   кнопка 
@@ -465,6 +469,7 @@ namespace WindowsFormsApp4
                 IndexY = GetIndex(h1);          //   получаем индекс коэффицента осадков
                 K1 = osad[IndexY][1];           //   находим коэффицент
                 AO = 0.001 * S * h1 * K1;           //   атмосферные осадки
+
                 Kvp = vid[comboBox3.Items.IndexOf(comboBox3.Text)];
                 Kkat = kat[comboBox2.Items.IndexOf(comboBox2.Text)];            //   получаем значение коэффицента чего-то, в зависимости от категории земель
                 Ksost = sost[comboBox4.Items.IndexOf(comboBox4.Text)];          //   получаем условные значения для состава отходов
