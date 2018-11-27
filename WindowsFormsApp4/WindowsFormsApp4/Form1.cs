@@ -476,7 +476,7 @@ namespace WindowsFormsApp4
 
                 };           
 
-                V = GetV(S, H, selection1);         //   получаем объём свалки
+                V = Math.Round(GetV(S, H, selection1),2);         //   получаем объём свалки
             if (V == 0)
             { return; }
 
@@ -484,7 +484,7 @@ namespace WindowsFormsApp4
                 L = GetL(R, H);         //   образующая конуса
                 ST = GetST(S);          //   сторона основания пирамиды или параллелепипеда
                 AP = GetAP(H, ST);          //   апофема пирамиды
-                SP = GetSP(L, S, R, AP, ST, H, selection1);         //   площадь поверхности фигуры
+                SP = Math.Round(GetSP(L, S, R, AP, ST, H, selection1),2);         //   площадь поверхности фигуры
 
                 BHO = (0.15 * V);           //   влага, расходуемая на насыщение отходов
 
@@ -498,11 +498,11 @@ namespace WindowsFormsApp4
                 Ksost = sost[comboBox4.Items.IndexOf(comboBox4.Text)];          //   получаем условные значения для состава отходов
                 IC = 0.01 * SP * 54 * 1.113 * Kvp;          //   испарение с поверхности полигона
                 OB = Kov * (AO - IC);           //   отжимная влага
-                Vf = Math.Abs((AO + OB) - (IC + BHO));            //   самая большая и самая страшная формула, объём фильтрата
-                M = V * 0.45;           //   масса отходов
+                Vf = Math.Round(Math.Abs((AO + OB) - (IC + BHO)),2);            //   самая большая и самая страшная формула, объём фильтрата
+                M = Math.Round(V * 0.45,2);           //   масса отходов
 
 
-                USH = M * 5 * Kkat;          //   размер вреда
+                USH = Math.Round(M * 5 * Kkat,2);          //   размер вреда
                 KeoM1 = GetKeoM1(Keo1, Ksost, S, LK, T, Vf, USH);           //   получаем колличество верных значений
                 KeoM2 = GetKeoM2(Keo1, Ksost, S, LK, T, Vf, USH);
                 KeoM3 = GetKeoM3(Keo1, Ksost, S, LK, T, Vf, USH);

@@ -195,6 +195,7 @@
             this.comboBox3.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBox3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox3.DropDownWidth = 500;
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.ItemHeight = 13;
             this.comboBox3.Items.AddRange(new object[] {
@@ -454,7 +455,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Расчет класса экологической опасности стихийной несанкционированной свалки";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
