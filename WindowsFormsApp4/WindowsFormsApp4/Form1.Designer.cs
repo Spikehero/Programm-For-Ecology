@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -61,6 +62,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.label22 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -230,7 +232,7 @@
             // 
             this.label4.Location = new System.Drawing.Point(23, 119);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(108, 54);
+            this.label4.Size = new System.Drawing.Size(108, 45);
             this.label4.TabIndex = 20;
             this.label4.Text = "Среднее количество осадков за год, мм";
             // 
@@ -276,6 +278,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
             this.panel1.Controls.Add(this.label21);
             this.panel1.Controls.Add(this.label20);
             this.panel1.Controls.Add(this.label19);
@@ -289,18 +292,20 @@
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label12);
-            this.panel1.Location = new System.Drawing.Point(2, 0);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(483, 458);
+            this.panel1.Size = new System.Drawing.Size(488, 438);
             this.panel1.TabIndex = 23;
             this.panel1.Visible = false;
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(204, 187);
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label21.ForeColor = System.Drawing.Color.Red;
+            this.label21.Location = new System.Drawing.Point(374, 280);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(10, 13);
+            this.label21.Size = new System.Drawing.Size(23, 31);
             this.label21.TabIndex = 36;
             this.label21.Text = "-";
             // 
@@ -352,9 +357,10 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(18, 187);
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label15.Location = new System.Drawing.Point(20, 286);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(179, 13);
+            this.label15.Size = new System.Drawing.Size(322, 25);
             this.label15.TabIndex = 30;
             this.label15.Text = "Класс экологической опасности :";
             // 
@@ -378,9 +384,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(68, 403);
+            this.button2.Location = new System.Drawing.Point(23, 332);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(170, 106);
             this.button2.TabIndex = 27;
             this.button2.Text = "Назад";
             this.button2.UseVisualStyleBackColor = true;
@@ -429,11 +435,24 @@
             this.comboBox4.TabIndex = 25;
             this.comboBox4.MouseHover += new System.EventHandler(this.comboBox4_MouseHover);
             // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.BackColor = System.Drawing.Color.Transparent;
+            this.label22.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label22.Location = new System.Drawing.Point(343, 441);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(129, 13);
+            this.label22.TabIndex = 26;
+            this.label22.Text = "Made by Aleksandr Tutov";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(484, 461);
+            this.Controls.Add(this.label22);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.comboBox4);
             this.Controls.Add(this.label6);
@@ -454,6 +473,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "Расчет класса экологической опасности стихийной несанкционированной свалки";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
@@ -499,6 +521,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label22;
     }
 }
 
